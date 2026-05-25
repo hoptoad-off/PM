@@ -4,7 +4,7 @@ id: T-005
 title: "Weekend Sprint: Google Ads UTM tracking + Linktree теги + аудит /contact и /how-to-apply + редирект URL объявлений на /tuition-fees"
 spec: "Funnel/1-School-site/_Hub.md"
 funnel-stage: "1-School-site"
-status: pending
+status: done
 priority: high
 assignee: Timur
 estimate: small
