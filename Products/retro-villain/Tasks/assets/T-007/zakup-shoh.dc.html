@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas"><style>body{margin:0;background:#e9ebe4;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#1c302b}*{box-sizing:border-box}a{color:#315e4c}a:hover{color:#143e35}button,input,select{font:inherit}input:focus,select:focus{outline:2px solid #d2af59;outline-offset:-1px}.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 20px}.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}.dv-opts{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.55)}.dv-card{max-width:100%;background:#f6f7f2;border:1px solid rgba(0,0,0,.08);border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden}.dv-opt:target .dv-oid{background:#2a78d6;color:#fff}.dv-next{margin:22px 0 0;font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.5);max-width:1400px}</style></helmet>
+<section class="dv-turn" id="t3">
+<div class="dv-thd"><a class="dv-tid" href="#t3">3</a><span class="dv-tname">Закуп · Шох: мобильное приложение. Каждая покупка сразу попадает в <b>«Финансы дня» (экран бухгалтера, 2a)</b> → «Баланс Шох»</span></div>
+<div class="dv-opts">
+<div class="dv-opt" id="3a">
+<div class="dv-olabel"><a class="dv-oid" href="#3a">3a</a>Живой прототип · экраны:</div>
+<div style="display:flex;flex-wrap:wrap;gap:6px;max-width:402px">
+  <sc-for list="{{ ph.jumps }}" as="j" hint-placeholder-count="7"><button type="button" onClick="{{ j.onClick }}" style="border:1px solid #dbe3d8;border-radius:20px;padding:5px 10px;font:500 11px system-ui,sans-serif;cursor:pointer;background:{{ j.bg }};color:{{ j.fg }}">{{ j.label }}</button></sc-for>
+</div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ ph.dark }}" hint-size="402px,874px">
+<div style="min-height:100%;display:flex;flex-direction:column;background:#f3f4ee;color:#1c302b;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+
+<sc-if value="{{ ph.isHome }}" hint-placeholder-val="{{ true }}">
+  <div style="position:relative;overflow:hidden;background:#143e35;color:#fff;padding:64px 20px 22px;border-radius:0 0 28px 28px">
+    <div style="position:absolute;width:240px;height:240px;border-radius:50%;border:1px solid #d8b97722;right:-120px;top:-90px;box-shadow:0 0 0 28px #d8b9770a,0 0 0 60px #d8b97706;pointer-events:none"></div>
+    <div style="position:relative;display:flex;align-items:center;gap:12px">
+      <span style="display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:#d8b977;color:#143e35;font-weight:700;font-size:18px">Ш</span>
+      <div style="flex:1"><div style="font-size:17px;font-weight:600">Салом, Шох</div><div style="font-size:12px;color:#a9bfb1;margin-top:2px">Закуп · {{ ph.dateLabel }}</div></div>
+      <span style="padding:6px 11px;border-radius:20px;background:#ffffff14;border:1px solid #d8b97766;color:#e8cf95;font-size:12px;font-weight:650">Ур. {{ ph.lvl }}</span>
+    </div>
+    <div style="position:relative;margin-top:22px"><div style="font-size:12px;color:#a9bfb1">На руках</div>
+      <div style="display:flex;align-items:baseline;gap:6px;margin-top:4px"><span style="font-size:42px;font-weight:650;letter-spacing:-1.5px;font-variant-numeric:tabular-nums">{{ ph.bal }}</span><span style="font-size:14px;color:#a9bfb1">сум</span></div>
+      <div style="font-size:12px;color:#c5d3c9;margin-top:4px">{{ ph.balSub }}</div></div>
+    <div style="position:relative;margin-top:16px"><div style="font-size:11px;color:#c5d3c9;margin-bottom:6px">Отчитались за {{ ph.accPct }} денег на руках</div>
+      <div style="height:8px;border-radius:4px;background:#ffffff1a;overflow:hidden"><div style="height:100%;border-radius:4px;background:#8fc3a0;transition:width .6s;width:{{ ph.accW }}"></div></div></div>
+  </div>
+  <div style="display:grid;gap:12px;padding:14px 16px">
+    <div style="background:#fff;border-radius:20px;padding:16px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><strong style="font-size:15px;font-weight:600">{{ ph.lvlTitle }}</strong><span style="font-size:11px;color:#906c2b;font-weight:650">{{ ph.xpText }}</span></div>
+      <div style="height:8px;border-radius:4px;background:#f1ecdc;overflow:hidden;margin-top:10px"><div style="height:100%;border-radius:4px;background:#d8b977;transition:width .6s;width:{{ ph.xpPct }}"></div></div>
+      <div style="font-size:11px;color:#88978a;margin-top:6px">{{ ph.xpNext }}</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:12px;border-top:1px solid #eef1ea">
+        <div style="display:flex;gap:5px"><sc-for list="{{ ph.week }}" as="w" hint-placeholder-count="7"><div style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="display:grid;place-items:center;width:28px;height:28px;border-radius:50%;font-size:11px;font-weight:650;background:{{ w.bg }};color:{{ w.fg }};border:1.5px solid {{ w.border }}">{{ w.mark }}</span><span style="font-size:9px;color:#88978a">{{ w.l }}</span></div></sc-for></div>
+        <div style="text-align:right"><div style="font-size:15px;font-weight:650;color:#906c2b;white-space:nowrap">{{ ph.streak }}</div><div style="font-size:10px;color:#88978a">без пропусков</div></div>
+      </div>
+    </div>
+    <div style="background:#fff;border-radius:20px;padding:16px">
+      <strong style="display:block;font-size:15px;font-weight:600;margin-bottom:4px">Задания на сегодня</strong>
+      <sc-for list="{{ ph.quests }}" as="q" hint-placeholder-count="3">
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid #eef1ea">
+          <span style="display:grid;place-items:center;width:26px;height:26px;flex:none;border-radius:50%;border:1.5px solid {{ q.dotBorder }};background:{{ q.dotBg }};color:#fff;font-size:12px">{{ q.mark }}</span>
+          <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:600">{{ q.title }}</div><div style="display:flex;align-items:center;gap:8px;margin-top:5px"><div style="flex:1;height:4px;border-radius:2px;background:#eef1ea;overflow:hidden"><div style="height:100%;background:{{ q.barBg }};width:{{ q.pctW }}"></div></div><span style="font-size:10px;color:#88978a;white-space:nowrap">{{ q.sub }}</span></div></div>
+          <span style="padding:4px 8px;border-radius:8px;font-size:10px;font-weight:700;background:{{ q.xpBg }};color:{{ q.xpFg }}">+30 XP</span>
+        </div>
+      </sc-for>
+    </div>
+    <sc-if value="{{ ph.hasTransfers }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#eaf1e6;border-radius:20px;padding:14px 16px">
+        <div style="font-size:12px;font-weight:650;color:#285140">Оплачено переводом — наличными не платить</div>
+        <sc-for list="{{ ph.transfers }}" as="t" hint-placeholder-count="1"><div style="margin-top:8px;font-size:13px;font-weight:600">{{ t.title }}<div style="font-size:11px;font-weight:400;color:#607368;margin-top:2px">{{ t.sub }}</div></div></sc-for>
+      </div>
+    </sc-if>
+    <div style="background:#fff;border-radius:20px;padding:16px">
+      <strong style="display:block;font-size:15px;font-weight:600;margin-bottom:4px">{{ ph.recentTitle }}</strong>
+      <sc-for list="{{ ph.recent }}" as="r" hint-placeholder-count="3">
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid #eef1ea">
+          <sc-if value="{{ r.hasUrl }}" hint-placeholder-val="{{ false }}"><span style="width:40px;height:40px;border-radius:12px;flex:none;background-size:cover;background-position:center;background-image:url({{ r.url }})"></span></sc-if>
+          <sc-if value="{{ r.noUrl }}" hint-placeholder-val="{{ true }}"><span style="display:grid;place-items:center;width:40px;height:40px;flex:none;border-radius:12px;background:#edf2e9;color:#35624e;font-weight:700">{{ r.init }}</span></sc-if>
+          <div style="flex:1;min-width:0"><div style="display:flex;align-items:center;gap:6px"><span style="font-size:14px;font-weight:600">{{ r.item }}</span><sc-if value="{{ r.hasTag }}" hint-placeholder-val="{{ false }}"><span style="padding:2px 6px;border-radius:5px;background:#fbf0d7;color:#906c2b;font-size:9px;font-weight:650">{{ r.tag }}</span></sc-if></div><div style="font-size:11px;color:#88978a;margin-top:2px">{{ r.sub }}</div></div>
+          <strong style="font-size:14px;font-weight:600;font-variant-numeric:tabular-nums">{{ r.total }}</strong>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <div style="position:sticky;bottom:0;margin-top:auto;padding:10px 16px 34px;background:#f3f4ee">
+    <button type="button" onClick="{{ ph.start }}" style="width:100%;height:62px;border:0;border-radius:20px;background:#143e35;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 10px 24px #143e3533">
+      <span style="display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#d8b977;color:#143e35;font-size:20px;font-weight:700">+</span>
+      <span style="text-align:left"><span style="display:block;font-size:17px;font-weight:600">Новый закуп</span><span style="display:block;font-size:11px;color:#c5d3c9">Уложитесь в 15 минут — +50 XP</span></span>
+    </button>
+  </div>
+</sc-if>
+
+<sc-if value="{{ ph.inFlow }}" hint-placeholder-val="{{ false }}">
+  <div style="position:sticky;top:0;z-index:5;padding:60px 16px 12px;background:#f3f4ee">
+    <div style="display:flex;align-items:center;gap:10px">
+      <button type="button" onClick="{{ ph.close }}" style="width:40px;height:40px;border:0;border-radius:50%;background:#fff;color:#53675c;font-size:20px;cursor:pointer;box-shadow:0 1px 3px #0000000f">×</button>
+      <div style="flex:1;text-align:center;font-size:13px;color:#607368">Шаг {{ ph.stepNo }} из 4 · <strong style="color:#1c302b;font-weight:600">{{ ph.stepName }}</strong></div>
+      <span style="padding:8px 11px;border-radius:20px;font-size:13px;font-weight:650;font-variant-numeric:tabular-nums;background:{{ ph.timerBg }};color:{{ ph.timerFg }}">⏱ {{ ph.timer }}</span>
+    </div>
+    <div style="display:flex;gap:5px;margin-top:12px"><sc-for list="{{ ph.segs }}" as="g" hint-placeholder-count="4"><div style="flex:1;height:5px;border-radius:3px;transition:background .3s;background:{{ g.bg }}"></div></sc-for></div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;gap:14px;padding:6px 16px 16px">
+    <sc-if value="{{ ph.isPoint }}" hint-placeholder-val="{{ false }}">
+      <div><h1 style="font-size:28px;font-weight:650;letter-spacing:-.8px;margin:0">Где закупаете?</h1><p style="font-size:13px;color:#7d8881;margin:6px 0 0">Нажмите на точку — сразу перейдём к товару</p></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <sc-for list="{{ ph.points }}" as="p" hint-placeholder-count="4">
+          <button type="button" onClick="{{ p.onClick }}" style="height:168px;border-radius:22px;background:#fff;border:2px solid {{ p.border }};padding:16px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;text-align:left;cursor:pointer;color:#1c302b" style-active="transform:scale(.97)">
+            <span style="display:grid;place-items:center;width:58px;height:58px;border-radius:18px;background:#edf2e9;color:#143e35;font-size:20px;font-weight:750">{{ p.mono }}</span>
+            <span><span style="display:block;font-size:17px;font-weight:650">{{ p.name }}</span><span style="display:block;font-size:11px;color:#88978a;margin-top:3px">{{ p.sub }}</span></span>
+          </button>
+        </sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{ ph.isItem }}" hint-placeholder-val="{{ false }}">
+      <button type="button" onClick="{{ ph.toPoint }}" style="align-self:flex-start;border:0;border-radius:20px;background:#e3ebdf;color:#285140;padding:7px 12px;font-size:12px;font-weight:600;cursor:pointer">{{ ph.point }} · сменить</button>
+      <h1 style="font-size:28px;font-weight:650;letter-spacing:-.8px;margin:0">Что купили?</h1>
+      <input value="{{ ph.q }}" onChange="{{ ph.onQ }}" placeholder="Поиск: помидоры, лук, мясо…" style="height:54px;border:1px solid #dbe3d8;border-radius:16px;padding:0 16px;background:#fff;color:#1c302b;font-size:16px"></input>
+      <sc-if value="{{ ph.isCustom }}" hint-placeholder-val="{{ false }}"><div style="padding:10px 14px;border-radius:14px;background:#143e35;color:#fff;font-size:14px;font-weight:600">Выбрано: {{ ph.item }}</div></sc-if>
+      <div style="font-size:12px;font-weight:650;color:#607368;margin-bottom:-6px">{{ ph.listTitle }}</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <sc-for list="{{ ph.items }}" as="it" hint-placeholder-count="8">
+          <button type="button" onClick="{{ it.onClick }}" style="min-height:62px;border-radius:16px;border:1px solid {{ it.border }};background:{{ it.bg }};color:{{ it.fg }};padding:10px 12px;text-align:left;cursor:pointer"><span style="display:block;font-size:15px;font-weight:600">{{ it.name }}</span><span style="display:block;font-size:10px;margin-top:3px;color:{{ it.subFg }}">{{ it.sub }}</span></button>
+        </sc-for>
+      </div>
+      <sc-if value="{{ ph.canAdd }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ ph.addCustom }}" style="height:52px;border:1.5px dashed #9fb4a2;border-radius:16px;background:none;color:#285140;font-size:14px;font-weight:600;cursor:pointer">{{ ph.addLabel }}</button></sc-if>
+      <label style="display:block;cursor:pointer">
+        <input type="file" accept="image/*" capture="environment" onChange="{{ ph.onPhoto }}" style="display:none"></input>
+        <sc-if value="{{ ph.hasPhoto }}" hint-placeholder-val="{{ false }}"><div style="position:relative"><div style="width:100%;height:170px;border-radius:18px;background-size:cover;background-position:center;background-image:url({{ ph.photo }})"></div><span style="position:absolute;right:10px;bottom:10px;padding:7px 11px;border-radius:20px;background:#143e35d9;color:#fff;font-size:12px">Переснять</span></div></sc-if>
+        <sc-if value="{{ ph.noPhoto }}" hint-placeholder-val="{{ true }}"><div style="height:112px;border:1.5px dashed #c9b27a;border-radius:18px;background:#fbf7ed;display:flex;align-items:center;gap:14px;padding:0 18px">
+          <span style="display:grid;place-items:center;width:52px;height:52px;border-radius:16px;background:#fff;color:#906c2b"><svg viewBox="0 0 24 24" style="width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.6"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg></span>
+          <span style="flex:1"><span style="display:block;font-size:15px;font-weight:600;color:#1c302b">Сфотографируйте товар или чек</span><span style="display:block;font-size:11px;color:#7a6a45;margin-top:3px">Бухгалтер увидит фото рядом с покупкой</span></span>
+          <span style="padding:4px 8px;border-radius:8px;background:#d8b977;color:#143e35;font-size:10px;font-weight:700">+10 XP</span>
+        </div></sc-if>
+      </label>
+    </sc-if>
+    <sc-if value="{{ ph.isQty }}" hint-placeholder-val="{{ false }}">
+      <div><div style="font-size:12px;color:#7d8881">{{ ph.point }}</div><h1 style="font-size:28px;font-weight:650;letter-spacing:-.8px;margin:2px 0 0">{{ ph.item }}</h1></div>
+      <div style="background:#fff;border-radius:20px;padding:16px">
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:13px;font-weight:600;color:#607368">Сколько</span>
+          <div style="display:flex;padding:3px;border-radius:10px;background:#f1f3ee"><sc-for list="{{ ph.units }}" as="u" hint-placeholder-count="4"><button type="button" onClick="{{ u.onClick }}" style="border:0;border-radius:8px;padding:6px 10px;font-size:12px;font-weight:600;cursor:pointer;background:{{ u.bg }};color:{{ u.fg }}">{{ u.label }}</button></sc-for></div></div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:14px">
+          <button type="button" onClick="{{ ph.minus }}" style="width:56px;height:56px;flex:none;border:0;border-radius:18px;background:#f1f3ee;color:#143e35;font-size:26px;cursor:pointer">−</button>
+          <input value="{{ ph.qty }}" onChange="{{ ph.onQty }}" inputmode="decimal" placeholder="0" style="flex:1;min-width:0;height:64px;border:0;background:none;text-align:center;font-size:46px;font-weight:650;letter-spacing:-1px;color:#1c302b;font-variant-numeric:tabular-nums"></input>
+          <button type="button" onClick="{{ ph.plus }}" style="width:56px;height:56px;flex:none;border:0;border-radius:18px;background:#143e35;color:#fff;font-size:26px;cursor:pointer">+</button>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:12px"><sc-for list="{{ ph.quick }}" as="k" hint-placeholder-count="3"><button type="button" onClick="{{ k.onClick }}" style="flex:1;height:40px;border:1px solid #dbe3d8;border-radius:12px;background:#fff;color:#35624e;font-size:13px;font-weight:600;cursor:pointer">{{ k.label }}</button></sc-for></div>
+      </div>
+      <div style="background:#fff;border-radius:20px;padding:16px">
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:13px;font-weight:600;color:#607368">Цена</span>
+          <div style="display:flex;padding:3px;border-radius:10px;background:#f1f3ee"><sc-for list="{{ ph.modes }}" as="m" hint-placeholder-count="2"><button type="button" onClick="{{ m.onClick }}" style="border:0;border-radius:8px;padding:6px 10px;font-size:12px;font-weight:600;cursor:pointer;background:{{ m.bg }};color:{{ m.fg }};box-shadow:{{ m.shadow }}">{{ m.label }}</button></sc-for></div></div>
+        <div style="display:flex;align-items:baseline;gap:8px;margin-top:10px;border-bottom:2px solid #dbe3d8;padding-bottom:6px"><input value="{{ ph.price }}" onChange="{{ ph.onPrice }}" inputmode="numeric" placeholder="0" style="flex:1;min-width:0;border:0;background:none;font-size:32px;font-weight:650;color:#1c302b;font-variant-numeric:tabular-nums;outline:none"></input><span style="font-size:15px;color:#7d8881">сум</span></div>
+        <div style="font-size:12px;font-weight:550;margin-top:8px;color:{{ ph.priceColor }}">{{ ph.priceMsg }}</div>
+      </div>
+      <div style="background:#143e35;color:#fff;border-radius:20px;padding:16px;display:flex;justify-content:space-between;align-items:center">
+        <div><div style="font-size:12px;color:#c5d3c9">Итого</div><div style="font-size:11px;color:#a9bfb1;margin-top:3px">{{ ph.unitLine }}</div></div>
+        <div style="font-size:28px;font-weight:650;letter-spacing:-.8px;font-variant-numeric:tabular-nums">{{ ph.total }}</div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ ph.isConfirm }}" hint-placeholder-val="{{ false }}">
+      <h1 style="font-size:28px;font-weight:650;letter-spacing:-.8px;margin:0">Всё верно?</h1>
+      <div style="background:#fff;border-radius:22px;overflow:hidden">
+        <sc-if value="{{ ph.hasPhoto }}" hint-placeholder-val="{{ false }}"><div style="width:100%;height:150px;background-size:cover;background-position:center;background-image:url({{ ph.photo }})"></div></sc-if>
+        <div style="padding:6px 16px 14px">
+          <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #eef1ea;font-size:14px"><span style="color:#7d8881">Точка</span><strong style="font-weight:600">{{ ph.point }}</strong></div>
+          <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #eef1ea;font-size:14px"><span style="color:#7d8881">Товар</span><strong style="font-weight:600">{{ ph.item }}</strong></div>
+          <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #eef1ea;font-size:14px"><span style="color:#7d8881">Расчёт</span><strong style="font-weight:600">{{ ph.unitLine }}</strong></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:12px 0 0"><span style="color:#7d8881;font-size:14px">Итого</span><strong style="font-size:26px;font-weight:650;letter-spacing:-.6px;font-variant-numeric:tabular-nums">{{ ph.total }}</strong></div>
+        </div>
+      </div>
+      <div style="background:#fff;border-radius:18px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;font-size:13px"><span style="color:#7d8881">На руках после</span><strong style="font-size:18px;font-weight:650;font-variant-numeric:tabular-nums;color:{{ ph.balAfterColor }}">{{ ph.balAfter }} сум</strong></div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ ph.xpParts }}" as="x" hint-placeholder-count="3"><span style="padding:6px 10px;border-radius:20px;background:#fbf0d7;color:#906c2b;font-size:12px;font-weight:650">{{ x.label }}</span></sc-for></div>
+      <sc-if value="{{ ph.warnPhoto }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px;color:#b0663a">Без фото: −10 XP, бухгалтер отметит покупку.</div></sc-if>
+      <sc-if value="{{ ph.warnPrice }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px;color:#b0663a">Цена выше обычной — бухгалтер проверит.</div></sc-if>
+    </sc-if>
+  </div>
+  <sc-if value="{{ ph.showNav }}" hint-placeholder-val="{{ false }}">
+    <div style="position:sticky;bottom:0;display:flex;gap:10px;padding:12px 16px 34px;background:#f3f4ee;border-top:1px solid #e3e7df">
+      <button type="button" onClick="{{ ph.back }}" style="width:100px;height:58px;border:1px solid #dbe3d8;border-radius:18px;background:#fff;color:#35624e;font-size:15px;font-weight:600;cursor:pointer">Назад</button>
+      <button type="button" onClick="{{ ph.next }}" style="flex:1;height:58px;border:0;border-radius:18px;color:#fff;font-size:16px;font-weight:650;cursor:pointer;transition:background .2s;background:{{ ph.nextBg }}">{{ ph.nextLabel }}</button>
+    </div>
+  </sc-if>
+</sc-if>
+
+<sc-if value="{{ ph.isDone }}" hint-placeholder-val="{{ false }}">
+  <div style="flex:1;min-height:874px;background:#143e35;color:#fff;padding:96px 22px 34px;display:flex;flex-direction:column;align-items:center;text-align:center">
+    <span style="display:grid;place-items:center;width:124px;height:124px;border-radius:50%;border:2px solid #d8b977;box-shadow:0 0 0 16px #d8b97714,0 0 0 34px #d8b97709;color:#d8b977;font-size:56px">✓</span>
+    <div style="font-size:30px;font-weight:650;letter-spacing:-.8px;margin-top:42px">Записано!</div>
+    <div style="font-size:14px;color:#c5d3c9;margin-top:6px">{{ ph.doneItem }} · {{ ph.doneSum }} сум</div>
+    <div style="font-size:44px;font-weight:700;color:#e8cf95;margin-top:22px;letter-spacing:-1px">{{ ph.doneXp }}</div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:10px"><sc-for list="{{ ph.doneParts }}" as="x" hint-placeholder-count="3"><span style="padding:5px 10px;border-radius:20px;background:#ffffff14;color:#e8cf95;font-size:11px;font-weight:600">{{ x.label }}</span></sc-for></div>
+    <div style="width:100%;margin-top:26px;padding:16px;border-radius:18px;background:#ffffff0f;border:1px solid #ffffff1a;display:flex;justify-content:space-between;align-items:center"><span style="font-size:12px;color:#c5d3c9;text-align:left">На руках<br><span style="font-size:11px;color:#8fa898">было {{ ph.balBefore }}</span></span><strong style="font-size:24px;font-weight:650;font-variant-numeric:tabular-nums">{{ ph.bal }}</strong></div>
+    <div style="font-size:12px;color:#a9bfb1;margin-top:12px">{{ ph.doneTrip }}</div>
+    <div style="margin-top:auto;width:100%;display:grid;gap:10px;padding-top:24px">
+      <button type="button" onClick="{{ ph.more }}" style="height:58px;border:0;border-radius:18px;background:#d8b977;color:#143e35;font-size:16px;font-weight:700;cursor:pointer">{{ ph.moreLabel }}</button>
+      <button type="button" onClick="{{ ph.finish }}" style="height:54px;border:1px solid #ffffff40;border-radius:18px;background:none;color:#fff;font-size:15px;font-weight:600;cursor:pointer">Завершить закуп</button>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ ph.isSummary }}" hint-placeholder-val="{{ false }}">
+  <div style="display:flex;flex-direction:column;gap:14px;padding:70px 18px 34px;flex:1">
+    <div><div style="font-size:11px;font-weight:650;letter-spacing:1.6px;color:#818c80">ЗАКУП ЗАВЕРШЁН</div><h1 style="font-size:30px;font-weight:650;letter-spacing:-.8px;margin:6px 0 0">Отличная работа</h1></div>
+    <div style="background:#fff;border-radius:22px;padding:18px;display:flex;align-items:center;justify-content:space-between">
+      <div><div style="font-size:12px;color:#7d8881">Время закупа</div><div style="display:flex;align-items:baseline;gap:6px;margin-top:4px"><span style="font-size:38px;font-weight:650;letter-spacing:-1px;font-variant-numeric:tabular-nums">{{ ph.sumTime }}</span><span style="font-size:13px;color:#9aa69b">из 15:00</span></div></div>
+      <span style="padding:7px 10px;border-radius:12px;font-size:11px;font-weight:700;max-width:120px;text-align:center;background:{{ ph.sumBadgeBg }};color:{{ ph.sumBadgeFg }}">{{ ph.sumBadge }}</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+      <div style="background:#fff;border-radius:16px;padding:12px"><div style="font-size:11px;color:#7d8881">Товаров</div><div style="font-size:22px;font-weight:650;margin-top:4px">{{ ph.sumN }}</div></div>
+      <div style="background:#fff;border-radius:16px;padding:12px"><div style="font-size:11px;color:#7d8881">Потрачено</div><div style="font-size:15px;font-weight:650;margin-top:8px;font-variant-numeric:tabular-nums">{{ ph.sumTotal }}</div></div>
+      <div style="background:#fbf0d7;border-radius:16px;padding:12px"><div style="font-size:11px;color:#906c2b">Опыт</div><div style="font-size:22px;font-weight:650;margin-top:4px;color:#906c2b">{{ ph.sumXp }}</div></div>
+    </div>
+    <div style="background:#fff;border-radius:20px;padding:16px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><strong style="font-size:14px;font-weight:600">Ур. {{ ph.lvl }} · {{ ph.lvlTitle }}</strong><span style="font-size:11px;color:#906c2b;font-weight:650">{{ ph.xpText }}</span></div>
+      <div style="height:8px;border-radius:4px;background:#f1ecdc;overflow:hidden;margin-top:10px"><div style="height:100%;border-radius:4px;background:#d8b977;transition:width .8s;width:{{ ph.xpPct }}"></div></div>
+      <div style="font-size:11px;color:#88978a;margin-top:6px">{{ ph.xpNext }}</div>
+    </div>
+    <div style="background:#fff;border-radius:20px;padding:6px 16px">
+      <sc-for list="{{ ph.sumList }}" as="l" hint-placeholder-count="3"><div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #eef1ea;font-size:13px"><span><strong style="font-weight:600">{{ l.item }}</strong> <span style="color:#88978a">· {{ l.qty }}</span></span><strong style="font-weight:600;font-variant-numeric:tabular-nums">{{ l.total }}</strong></div></sc-for>
+    </div>
+    <button type="button" onClick="{{ ph.goHome }}" style="margin-top:auto;height:58px;border:0;border-radius:18px;background:#143e35;color:#fff;font-size:16px;font-weight:650;cursor:pointer">На главную</button>
+  </div>
+</sc-if>
+
+</div>
+</x-import>
+</div>
+</div>
+<p class="dv-next">Логика: бухгалтер выдаёт Шоху наличные в <b>«Финансы дня» (экран бухгалтера, 2a)</b> → «Баланс Шох». Шох вносит каждую покупку с телефона: точка → товар и фото → количество и цена → подтверждение. Баланс, журнал и проверки пересчитываются сразу. Перечисления вносит только бухгалтер; Шох видит их в приложении, чтобы не заплатить повторно. Игровые элементы: опыт за каждую покупку, фото и нормальную цену, бонус за закуп до 15 минут, уровни, серия дней и задания на сегодня.</p>
+</section>
+</x-dc>
+</body>
+</html>
