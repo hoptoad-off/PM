@@ -16,6 +16,7 @@
 | **PM / Visionary** | Bekhruz | Writes specs, sets priorities, reviews PRs. Single source of truth for direction. |
 | **Middle Developer** | Alex | Builds features. Reads specs, opens PRs, owns architecture decisions within the spec. |
 | **Intern Developer** | Timur | Builds features under guidance. Same workflow as Alex (PR-per-task) — he's the more responsible of the two. |
+| **Designer / Frontend** | Amir | Owns UI polish and visual consistency. Same workflow as Alex and Timur (PR-per-task). |
 
 Bekhruz does not track Linear. Linear is the team's personal scratchpad if they want one.
 **Truth lives in this folder.** Truth = the markdown files + the git history.
@@ -65,6 +66,23 @@ Marketing site. CWV/SEO work in progress. Existing project — most tickets carr
 
 ---
 
+## Products/ — internal tools outside the funnel
+
+Not everything we build serves the funnel. Internal operational tools — used by
+staff, not by parents or leads — live under `Products/<product-name>/`, with the
+same shape as a funnel stage: `_Hub.md`, `Specs/`, `Tasks/`, `Decisions/`.
+
+Task IDs are shared with the rest of PM — `T-NNN` is unique across the whole
+repo, not per folder.
+
+| Product | Folder | What it is |
+|---|---|---|
+| **retro-villain** | `Products/retro-villain/` | Shift and payout tracking — daily payout sheet, monthly sheet, employee directory, late/no-show marks. Users: accounting and admin staff. |
+
+A new folder under `Products/` still needs Bekhruz's sign-off before it's created.
+
+---
+
 ## Org context Alex and Timur need to know
 
 - **Oxbridge International School** — private international school in Tashkent, Uzbekistan. Ages 2–18.
@@ -105,7 +123,7 @@ What devs do NOT need from CLAUDE.md: tuition amounts, pricing strategy, brand v
 ---
 
 ## Naming conventions
-- Folders: `PascalCase` for top-level (`Funnel/`, `Sprints/`, `Status/`), numbered + kebab for stages (`1-School-site/`).
+- Folders: `PascalCase` for top-level (`Funnel/`, `Products/`, `Sprints/`, `Status/`), numbered + kebab for stages (`1-School-site/`), kebab-case for products (`retro-villain/`).
 - Files: `kebab-case.md` for content, `_Hub.md` for index files, `_Templates/` and `_Skills/` prefixed with `_`.
 - Tasks: `T-{NNN}-short-slug.md` (e.g. `T-001-payments-click-webhook.md`).
 - Specs: `kebab-case.md` named by feature surface.
@@ -161,6 +179,7 @@ Skills live in `_Skills/` and are invoked from anywhere inside this folder.
 | Templates | `/Users/thebekhruz/Desktop/Career-Vault/PM/_Templates/` |
 | Skills | `/Users/thebekhruz/Desktop/Career-Vault/PM/_Skills/` |
 | Funnel | `/Users/thebekhruz/Desktop/Career-Vault/PM/Funnel/` |
+| Products (internal tools) | `/Users/thebekhruz/Desktop/Career-Vault/PM/Products/` |
 | Sprints | `/Users/thebekhruz/Desktop/Career-Vault/PM/Sprints/` |
 | Status logs | `/Users/thebekhruz/Desktop/Career-Vault/PM/Status/` |
 
